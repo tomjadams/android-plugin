@@ -16,6 +16,7 @@ object AndroidKeys {
   val keyalias = SettingKey[String]("key-alias")
   val versionCode = SettingKey[Int]("version-code")
   val versionName = TaskKey[String]("version-name")
+  val buildToolsVersion = SettingKey[String]("build-tools-version")
 
   /** Proguard Settings */
   val proguardOption = SettingKey[String]("proguard-option")
@@ -55,6 +56,7 @@ object AndroidKeys {
 
   /** Base Settings */
   val platformToolsPath = SettingKey[File]("platform-tools-path")
+  val buildToolsPath = SettingKey[File]("build-tools-path")
   val manifestPackage = TaskKey[String]("manifest-package")
   val manifestPackageName = TaskKey[String]("manifest-package-name")
   val minSdkVersion = TaskKey[Option[Int]]("min-sdk-version")
@@ -86,7 +88,7 @@ object AndroidKeys {
   val typedResource = TaskKey[File]("typed-resource",
     """Typed resource file to be generated, also includes
        interfaces to access these resources.""")
-  val layoutResources = TaskKey[Seq[File]]("layout-resources", 
+  val layoutResources = TaskKey[Seq[File]]("layout-resources",
       """All files that are in res/layout. They will
 		 be accessable through TR.layouts._""")
 

@@ -15,9 +15,10 @@ object AndroidPath {
     toolsPath <<= (sdkPath) (_ / "tools"),
     dbPath <<= (platformToolsPath, adbName) (_ / _),
     platformToolsPath <<= (sdkPath) (_ / "platform-tools"),
-    aaptPath <<= (platformToolsPath, aaptName) (_ / _),
-    idlPath <<= (platformToolsPath, aidlName) (_ / _),
-    dxPath <<= (platformToolsPath, osDxName) (_ / _),
+    buildToolsPath <<= (sdkPath, buildToolsVersion)(_ / "build-tools" / _),
+    aaptPath <<= (buildToolsPath, aaptName)(_ / _),
+    idlPath <<= (buildToolsPath, aidlName)(_ / _),
+    dxPath <<= (buildToolsPath, osDxName)(_ / _),
 
     sdkPath <<= (envs, baseDirectory) { (es, dir) =>
       determineAndroidSdkPath(es).getOrElse {
